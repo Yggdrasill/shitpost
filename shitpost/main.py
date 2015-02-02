@@ -31,7 +31,7 @@ def register_user():
   form = RegisterForm()
   if request.method == "POST" and form.validate_on_submit():
     password = hash_passwd(form.passwd.data)
-    user = User(1, form.username.data, password, 0,
+    user = User(1, form.username.data.lower(), password, 0,
                 str(datetime.datetime.now()), str(datetime.datetime.now()))
     db.session.add(user)
     db.session.commit()
@@ -44,7 +44,7 @@ def register_user():
 def passwd_user():
   form = PasswdForm()
   if request.method == "POST" and form.validate_on_submit():
-    user = User.query.filter_by(email=form.username.data).first()
+    user = User.query.filter_by(email=form.username.data.lower() ).first()
     passwd = hash_passwd(form.passwd.data)
     user.password = str(passwd)
     user.modified = str(datetime.datetime.now() )

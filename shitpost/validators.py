@@ -12,7 +12,7 @@ class CheckPasswd(object):
     self.message = message
 
   def __call__(self, form, field):
-    user = User.query.filter_by(email=form.username.data).first()
+    user = User.query.filter_by(email=form.username.data.lower() ).first()
     verify = verify_passwd(form.old.data, user.password)
 
     if self.message == None:
@@ -29,7 +29,7 @@ class CheckUser(object):
     self.message = message
 
   def __call__(self, form, field):
-    user = User.query.filter_by(email=form.username.data).first()
+    user = User.query.filter_by(email=form.username.data.lower() ).first()
 
     if self.message == None:
       message = field.gettext("This user doesn't exist.")
@@ -45,7 +45,7 @@ class UserExists(object):
     self.message = message
 
   def __call__(self, form, field):
-    user = User.query.filter_by(email=form.username.data).first()
+    user = User.query.filter_by(email=form.username.data.lower() ).first()
 
     if self.message == None:
       message = field.gettext("This username is taken.")
@@ -62,7 +62,7 @@ class CheckDomain(object):
 
   def __call__(self, form, field):
 
-    result = verify_email(form.username.data)
+    result = verify_email(form.username.data.lower() )
     name = result.group(2)
     domain = Domain.query.filter_by(name=name).first()
 
@@ -91,7 +91,7 @@ class EmailValid(object):
     else:
       message = self.message
 
-    result = verify_email(form.username.data)
+    result = verify_email(form.username.data.lower() )
 
     if result == None:
       raise StopValidation(message)
