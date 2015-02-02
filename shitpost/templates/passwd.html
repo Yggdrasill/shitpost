@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+    {% block content %}
+      <form action="passwd" method="POST" name="passwd">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <table style="width:400px">
+          <tr>
+            <td>{{ form.username.label }}</td>
+            <td>{{ form.username(size=20) }}</td>
+            <td>
+              {% for error in form.username.errors %}
+                <span style="color: red;">-- {{ error }}<br></span>
+              {% endfor %}
+            </td>
+          </tr>
+          <tr>
+            <td>{{ form.old.label }}</td>
+            <td>{{ form.old(size=20) }}</td>
+            <td>
+              {% for error in form.old.errors %}
+                <span style="color: red;">-- {{ error }}<br></span>
+              {% endfor %}
+            </td>
+          </tr>
+          <tr>
+            <td>{{ form.passwd.label }}</td>
+            <td>{{ form.passwd(size=20) }}</td>
+            <td>
+              {% for error in form.passwd.errors %}
+                <span style="color: red;">-- {{ error }}<br></span>
+              {% endfor %}
+            </td>
+          </tr>
+          <tr>
+            <td>{{ form.confirm.label }}</td>
+            <td>{{ form.confirm(size=20) }}</td>
+            <td>
+              {% for error in form.confirm.errors %}
+                <span style="color: red;">-- {{ error }}<br></span>
+              {% endfor %}
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>{{ form.submit }}</td>
+          </tr>
+        </table>
+      </form>
+    {% endblock %}

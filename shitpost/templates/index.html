@@ -1,0 +1,7 @@
+{% extends "base.html" %}
+    {% block content %}
+      <form method="POST" action="">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      </form>
+      shitpost.is: e-mail for shitposters
+    {% endblock %}

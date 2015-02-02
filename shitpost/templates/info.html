@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+    {% block content %}
+      <form method="POST" action="">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      </form>
+      <table>
+        <tr><td>You shouldn't have to care about this at all if using webmail.<br>
+        This page is only here for those that use other clients<br>
+        in case it fails to detect these settings.</td></tr>
+        <tr><td>Note: STARTTLS is required.</td></tr>
+      </table><br><br>
+      <table style="width:100px">
+        <tr>
+          <td colspan=2>SMTP</td>
+        </tr>
+        <tr>
+          <td>name:</td>
+          <td>smtp.shitpost.is</td>
+        </tr>
+        <tr>
+          <td>ports:</td>
+          <td>25, 465, 587</td>
+        </tr>
+      </table>
+      <br>
+      <table style="width:100px">
+        <tr>
+          <td colspan=2>IMAP</td>
+        </tr>
+        <tr>
+          <td>name:</td>
+          <td>imap.shitpost.is</td>
+        </tr>
+        <tr>
+          <td>ports:</td>
+          <td>143, 993</td>
+        </tr>
+      </table>
+    {% endblock %}

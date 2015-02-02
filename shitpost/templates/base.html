@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>{{ title }}</title>
+  </head>
+  <body bgcolor="#d6daf0">
+    <center>
+      <img src="{{ url_for('static', filename='shitposting.png') }}">
+      <h1>shitpost e-mail system: {{ page }}</h1>
+      <a href="{{ url_for('shitpost_home') }}">home</a> |
+      <a href="https://mail.shitpost.is">webmail</a> |
+      <a href="{{ url_for('shitpost_info') }}">info</a> |
+      <a href="{{ url_for('register_user') }}">register</a> |
+      <a href="{{ url_for('passwd_user') }}">change password</a>
+      <br><hr><br>
+      {% block content %}
+      {% endblock %}
+    </center>
+  </body>
+</html>
